@@ -44,6 +44,7 @@ kotlin {
 
             defaultConfig {
                 minSdk = 28
+                testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
             }
 
             sourceSets {
@@ -81,6 +82,14 @@ kotlin {
             dependencies {
                 val jna = libs.jna.get()
                 api("${jna.module.group}:${jna.module.name}:${jna.versionConstraint}:@aar")
+            }
+        }
+
+        androidInstrumentedTest {
+            dependencies {
+                val androidXTestVersion = "1.7.0"
+                implementation("androidx.test:runner:$androidXTestVersion")
+                implementation("androidx.test:rules:$androidXTestVersion")
             }
         }
 
