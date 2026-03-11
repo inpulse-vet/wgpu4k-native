@@ -82,6 +82,14 @@ publishing {
                 logger.info("publishing path is ${url.path}")
             }
         }
+        maven {
+            name = "NexusInternal"
+            url = uri("https://nexus.ecg.vet/repository/maven-releases/")
+            credentials {
+                username = providers.gradleProperty("nexus_user").orNull
+                password = providers.gradleProperty("nexus_password").orNull
+            }
+        }
     }
 }
 
